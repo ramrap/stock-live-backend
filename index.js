@@ -3,6 +3,8 @@ const app = require('express')();
 var cors = require('cors')
 app.use(cors())
 
+const PORT=process.env.PORT||3001;
+
 const server = require('http').createServer(app);
 const options = {
     cors: {
@@ -23,6 +25,6 @@ io.on('connection', socket => {
     connection.onclose = () => { console.log("stocks connection error") }
 });
 
-server.listen(3001, () => {
+server.listen(PORT, () => {
     console.log("listening on port 3001")
 });
